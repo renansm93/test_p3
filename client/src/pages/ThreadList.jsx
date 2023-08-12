@@ -90,7 +90,7 @@ return (
     {threads.map((thread, index) => (
       <div style={{display:"inline-block"}} key={index}>
         
-
+      
         <div><Link to={`/threads/${thread._id}`}>{thread.title}</Link></div>
         <div>Created by: {thread.userId}</div>
 
