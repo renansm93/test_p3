@@ -1,4 +1,4 @@
-@import-normalize;
+
 
 :root {
   --darkColor: rgb(32, 33, 36);
@@ -29,29 +29,40 @@ html {
 body {
   box-sizing: border-box;
   font-size: 3rem;
+  height: 100vh;
   line-height: 1.5;
   font-family: 'Nunito', 'Outfit', sans-serif;
-  background-image: url("../src/images/Background_Image.jpg");
+  background-image: url("../src/images/5166950.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
   /* background-color: #282c34;  */
   text-align: center;
   color: var(--lightColor);
+  
 }
 
 
 h1 {
-  font-size: 20px;
+  font-size: 17px;
   text-transform: uppercase;
   color: var(--lightColor);  
-  line-height: 150%;
-
-
+  line-height: 180%;
+  background-color: white;
+  color: black;
+  width: 150px;
+  text-align: left;
+  border-radius: 2px;
+  justify-content: center;
+  border-style: solid;
+  border-color: gold;
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: 30px;
   text-transform: uppercase;
   color: gold;
-  font-family: 'Comforter', cursive, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 hr {
@@ -60,7 +71,8 @@ hr {
 }
 
 p {
-  font-size: 25px;
+  font-size: 15px;
+  padding-top: 0;
 }
 
 .primary,
@@ -72,7 +84,7 @@ p {
 h3 {
   display: block;
   font-size: 3rem;
-  color: var(--primeColor);
+  color: gold;
 
 }
 
@@ -82,11 +94,12 @@ a {
 
 header {
   width: 100%;
-  margin: 0 auto;
+  margin-top: 8px;
 }
 
 main {
-  margin: 5rem;
+  margin: 1rem;
+  
 }
 
 svg:hover {
@@ -169,6 +182,19 @@ textarea {
   font-family: "tahoma";
 }
 
+.winput {
+  float: right;
+  width: 60%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: floralwhite;
+  border: 2px solid var(--color-primary-variant);
+  resize: none;
+  color: black;
+  font-size: 15px;   
+  font-family: "tahoma";
+
+}
 
 .btn-primary {
   width: 100px;
@@ -192,7 +218,7 @@ button {
   color: rgb(47, 79, 79);   
   margin: 4px;
   border-radius: 0.5rem;
-  height: 40px;
+  height: 40px;  
 
 }
 
@@ -202,6 +228,13 @@ button {
   color:white!important;
   
  }
+
+.register {
+  margin-Left: auto;
+  margin-right: auto;
+  width: 480px;
+
+}
 
 
  label  {
@@ -214,3 +247,191 @@ button {
 p Update {
   font-size: 15px;
 }
+
+@media (max-width: 600px) {
+
+  main {
+    margin: 30px;
+  }
+  
+
+  .register {
+    margin: 5px;
+    width: 470px 
+  }
+  
+  .winput {  
+    width: 55%;
+  }
+  
+}
+
+@media (max-width: 500px) {
+
+  main {
+    margin: 10px;
+  }
+  
+
+  .register {
+    margin: 5px;
+    width: 430px 
+  }
+  
+  .winput {  
+    width: 55%;
+  }
+  
+}
+
+
+@media (max-width: 420px) {
+  .register {
+    margin: 5px;
+    width: 350px 
+  }
+  
+  .winput {  
+    width: 48%;
+  }
+  
+}
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+
+
+.container{
+	margin: 30px;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.row{
+	width: 100%;
+  height: 50%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.image{
+	background: #50A7FF;
+	position: relative;
+	flex: 1;
+	max-width: 350px;
+	height: 225px;
+	margin: 20px;
+	overflow: hidden;
+}
+
+.image img{
+	opacity: 1.5;
+	position: relative;
+	vertical-align: top;
+	transition: 0.6s;
+	transition-property: opacity;
+}
+
+.image:hover img{
+	opacity: 1;
+  
+}
+
+
+
+.image .details{
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+}
+
+.image .details h2{
+	text-align: center;
+	font-size: 35px;
+	text-transform: uppercase;
+	font-weight: 300;
+	margin-top: 70px;
+	transition: 0.4s;
+	transition-property: transform;
+}
+
+.image .details  h2 span{
+	font-weight: 900;
+  color: rgb(203, 228, 41);
+  background-color: #5056ff;
+  border-radius: 5px;  
+}
+
+.image:hover .details h2{
+	transform: translateY(-30px);
+}
+
+.image .details p{
+	margin: 30px 30px 0 30px;
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+	opacity: 5;
+	transition: 0.6s;
+	transition-property: opacity, transform;
+}
+
+.image:hover .details p{
+	opacity: 5;
+	transform: translateY(-40px);
+}
+
+
+
+.image:hover .more{
+	bottom: 0;
+}
+
+a {
+  font-family:Arial, Helvetica, sans-serif;
+  text-decoration: double;
+  text-shadow: #282c34;  
+}
+
+
+/* Responsive CSS */
+
+@media (max-width: 1080px){
+	.image{
+		flex: 100%;
+		max-width: 400px;
+	}
+}
+
+@media (max-width: 400px){
+	.image {
+		font-size: 16px;
+	}
+
+	}
+      
+
+
+  .thread_list {
+    background-color: #61dafb;
+
+  }
+
+  textarea {
+
+    width: 600px;
+    height: 20px;
+
+  }

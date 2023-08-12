@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import NavBar from '../layouts/Navbar';
 // import { Margin } from "@mui/icons-material";
 
 // import { Margin } from "@mui/icons-material";
@@ -21,38 +20,34 @@ const Posts = () => {
   };
   return (
     <>
-      <NavBar />
     <main className='home'>
           <h3> Create a Thread</h3>
 
-        <form className='homeForm' onSubmit={handleSubmit}>
+      <form className='homeForm' onSubmit={handleSubmit}>
         <div className='home__container'>
-          <label>Title / Description</label>
-            <input
-              type='text'
-              name='thread'
-              required
-              value={thread}
-              onChange={(e) => setThread(e.target.value)}
-              />
-        
-                       
+          <label  >Title / Description: </label>
+          <input 
+            type='text'
+            name='thread'
+            required
+            value={thread}
+            onChange={(e) => setThread(e.target.value)}
+          />
+        </div>             
         <Button
           style={{
           backgroundColor: "orange",
-          width: "148px",
-          height: "30px",
           fontSize: "15px",
           fontFamily: "Tahoma",
           justifyContent: "center",
           fontWeight: "bold",
           color: "rgb(47, 79, 79)",
-          Margin: "10px"              
+          marginLeft: "auto",
+          marginRight: "auto"              
           }}
            >
             CREATE THREAD
         </Button>
-        </div> 
       </form>
                  
     </main>

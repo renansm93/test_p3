@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import NavBar from "../layouts/Navbar";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const history = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ const Register = () => {
     };
 
     try {
-      const response = await fetch("/api/users", {
+      const response = await fetch("http://localhost:3000/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,41 +28,44 @@ const Register = () => {
         body: JSON.stringify(newUser),
       });
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Registration failed:', errorText);
+        throw new Error('Registration failed');
+      }
+
       const data = await response.json();
 
-      console.log("New User:", data);
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        console.log("New User Registered");
+        history('/TopicsMain');
+      }
       
-      //Clearing the form 
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPhoneNumber("");
-      setPassword("");
     } catch (error) {
-      console.error("Registration error:", error);
+      console.error("Registration error", error);
     }
   };
 
   return (
   <div>
-    <NavBar />
-    <main className="register">
+    <main  className="register">
       <h2>Create an account</h2>
-      <form className="registerForm" onSubmit={handleSubmit}>
+      <form   onSubmit={handleSubmit}>
         <div>
-        <label>First Name:</label>
-        <input
-          type="text"
-          name="firstName"
-          id="firstName"
-          required
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
+          <label style={{ float: "left" }} >First Name: </label>
+          <input className= "winput" 
+            type="text"
+            name="firstName"
+            id="firstName"
+            required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </div>
         <div> 
-        <label>Last Name:</label>
-        <input
+        <label style={{ float: "left" }}>Last Name: </label>
+        <input className= "winput"
           type="text"
           name="lastName"
           id="lastName"
@@ -72,8 +75,8 @@ const Register = () => {
         />
         </div>
         <div>
-        <label className="InputFont">Email Address:</label>
-        <input
+        <label style={{ float: "left" }} className="InputFont">Email Address: </label>
+        <input className= "winput"
           type="text"
           name="email"
           id="email"
@@ -83,8 +86,8 @@ const Register = () => {
         />
         </div>
         <div> 
-        <label htmlFor="phoneNumber">Phone Number:</label>
-        <input
+        <label style={{ float: "left" }} htmlFor="phoneNumber">Phone Number: </label>
+        <input className= "winput"
           type="text"
           name="phoneNumber"
           id="phoneNumber"
@@ -94,8 +97,8 @@ const Register = () => {
         />
         </div> 
         <div> 
-        <label htmlFor="password">Password:</label>
-        <input
+        <label style={{ float: "left" }} htmlFor="password">Password: </label>
+        <input className= "winput"
           type="password"
           name="password"
           id="password"

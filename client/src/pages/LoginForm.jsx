@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import NavBar from "../layouts/Navbar";
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import auth from "../utils/API";
 
@@ -19,6 +18,7 @@ const LoginForm = () => {
   const handleForgotPasswordClick = () => {
     // Need "forgot password" functionality
     console.log('Forgot Password clicked');
+    history("/ForgotPassword");
   };
 
   const handleRegisterClick = () => {
@@ -27,20 +27,29 @@ const LoginForm = () => {
     history('/register');
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // Call the utility function to make the authentication request
-    auth.handleFormSubmit(username, password);
-  }
+
+    try {
+      const data = await auth.handleFormSubmit(username, password);
+
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        history('/TopicsMain');
+      }
+    } catch (error) {
+      console.error("An error occurred while logging in:", error);
+    }
+  };
+  
   return (
   <div>
-      <NavBar />
     <div>
         <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className='fields'>
-          <label htmlFor="username">Username:</label>
-          <input
+      <form  onSubmit={handleFormSubmit}>
+        <div>
+          <label  htmlFor="username">Username: </label>
+          <input style={{ width: "200px" }}
             type="text"
             id="username"
             value={username}
@@ -49,8 +58,8 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input
+          <label  htmlFor="password">Password: </label>
+          <input style={{ width: "200px" }}
             type="password"
             id="password"
             value={password}
