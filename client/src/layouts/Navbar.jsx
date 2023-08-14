@@ -44,7 +44,11 @@ export default function NavBar() {
         navBar: {
             textAlign: "center",
             fontFamily: fontFamily,
-            backgroundColor: "inherit",
+            backgroundColor: "MidnightBlue",
+            position: "fixed",
+            top: "-8px",
+            borderRadius:"10px",
+            maxWidth:"xl",
             fontSize: "2rem",
         },
         logo: {
@@ -84,8 +88,8 @@ export default function NavBar() {
     return (
 
         <>
-            <AppBar position="static" style={styles.navBar} elevation='0' maxWidth="xl">
-                <Container maxWidth="xl">
+            <AppBar style={styles.navBar}>
+                <Container style = {{padding:"10px", maxWidth:"3000px"}}>
                     <Toolbar disableGutters>
                         <img src={logo} width= "120px" alt="Logo" />
 
@@ -119,16 +123,13 @@ export default function NavBar() {
                                 }}
                             >
                                 {listItems.map((listItem, i) => (
-                                    <Paper elevation={0}>
-                                        <MenuItem 
-                                            key={i} 
-                                            onClick={listItem.onClick || handleCloseNavMenu}
-                                        >
-                                            <Typography textAlign="center"><Link href={listItem.link} style={styles.link}>{listItem.title}</Link></Typography>
-                                        </MenuItem>
-                                    </Paper>
-                                ))}
-                            </Menu>
+                                <Paper elevation={0} key={i}>
+                                <MenuItem onClick={listItem.onClick || handleCloseNavMenu}>
+                                <Typography textAlign="center"><Link href={listItem.link} style={styles.link}>{listItem.title}</Link></Typography>
+                            </MenuItem>
+                            </Paper>
+                        ))}
+                        </Menu>
                         </Box>
                         <Typography
                             variant="h6"

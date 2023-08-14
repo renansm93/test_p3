@@ -89,7 +89,9 @@ h3 {
 }
 
 a {
-  color: aqua;
+  color: gold;
+  text-align: left;
+  
 }
 
 header {
@@ -434,4 +436,37 @@ a {
     width: 600px;
     height: 20px;
 
+  }
+
+
+
+  .thread_comments {
+    width: 800px;
+    margin-Left:auto;
+     margin-Right:auto;
+     margin-Bottom:40px;
+     
+     border-Style:solid;
+     padding-Bottom:15px;
+     border-Radius:5px; 
+     Background-Color:Navy;
+
+  }
+
+  .userID {
+    float: right;
+    margin-Top:0px; 
+    margin-Right:5px;
+    font-size: 12px;
+  }
+
+  .comment {
+    border-Radius:5px;
+    margin-Bottom:0px;
+    width:800px;
+    text-Align:left;
+    margin-Left:5px;
+    margin-Right:5px;
+    font-Size:20px; 
+    text-Transform:capitalize
   }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import TopicsMain from "./TopicsMain";
 
 
 const ThreadList = () => {
@@ -60,43 +61,46 @@ return (
       
 
     <form onSubmit={handleAddThread}>
-      <div>
-        <label>Title: </label>
-          <input
-            type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-          />
-      </div>
-        
-      <div>
-        <label>User ID: </label>
-          <input
-            type="text"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-            required
+      <div style={{width:"715px",marginLeft:"auto",marginRight:"auto"}}>
+        <div style={{display:"inline-block", float:"right", marginBottom:"10px"}}>
+          <label >Title: </label>
+            <input style={{width:"600px",}}
+              type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
             />
+        </div>
+          
+        <div style={{display:"inline-block", float:"right"}}>
+          <label>User ID: </label>
+            <input style={{width:"600px",}}
+              type="text"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+              required
+              />
+        </div>
       </div>
 
-      <div>
+      <div style={{marginBottom:"35px"}}>
         <button type="submit">Add Thread</button>
+        <button onClick={TopicsMain}>Back To Topics</button>
       </div>       
 
     </form> 
 
 
     {threads.map((thread, index) => (
-      <div style={{display:"inline-block"}} key={index}>
-        
-      
-        <div><Link to={`/threads/${thread._id}`}>{thread.title}</Link></div>
-        <div>Created by: {thread.userId}</div>
 
-      </div>
-      ))}              
-           
+    <div className="thread_comments" key={index}>
+      <p className="userID">Created by: {thread.userId}</p> 
+      <h2 className="comment" ><Link  to={`/threads/${thread._id}`}>{thread.title}</Link></h2>
+      
+      
+    </div>
+    ))}
+
   </div>
 
   );

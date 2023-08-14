@@ -105,6 +105,7 @@ const Register = () => {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="new-password"
         />
         </div> 
         <div> 
